@@ -9,6 +9,7 @@ import edu.room.reservation.repository.RoomRepository;
 
 public class RoomService {
     private static final int MAX_ROOM = 30;
+    private static final int MAX_LENGTH = 4;
     private RoomRepository roomRepo;
     private ReservationRepository resRepo;
     private User currentUser;
@@ -25,7 +26,7 @@ public class RoomService {
         while(true){
             try{
                 System.out.print("会議室名> "); String roomName = sc.nextLine();
-                TroubleShooting.checkString(roomName);
+                TroubleShooting.checkString(roomName, MAX_LENGTH);
                 TroubleShooting.assertAsciiAlnum(roomName);
                 TroubleShooting.isExist(roomRepo, roomName);
                 System.out.print("最大収容人数> "); String tmp = sc.nextLine();

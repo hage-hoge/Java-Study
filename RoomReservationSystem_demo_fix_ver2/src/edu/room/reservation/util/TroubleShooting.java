@@ -117,6 +117,12 @@ public class TroubleShooting {
             if(NG_CHARS_PATTERN.matcher(target).find()) throw new Exception(auto(1));
     }
 
+    public static void checkString(String target, int MAX_LENGTH) throws Exception{
+            if(target == null || target.isEmpty()) throw new Exception(auto(1));
+            if(target.length() >= MAX_LENGTH) throw new Exception(auto(1));
+            if(NG_CHARS_PATTERN.matcher(target).find()) throw new Exception(auto(1));
+    }
+
     public static String checkDateFormat(String target) throws Exception{
         if(target == null) throw new Exception(auto(1));
         return normalizeDate(target);
@@ -179,7 +185,7 @@ public class TroubleShooting {
             if (v <= 0) throw new NumberFormatException();
             return v;
         } catch (NumberFormatException e) {
-            throw new Exception(auto(3));          // 305
+            throw new Exception(auto(5));          // 305
         }
     }
 
